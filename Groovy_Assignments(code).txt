@@ -1,0 +1,338 @@
+prog1
+
+
+println 2.getClass()
+println 20.getClass()
+println 200.getClass()
+println 2000.getClass()
+println 20000.getClass()
+println 200000.getClass()
+println 2000000.getClass()
+println 20000000.getClass()
+println 20000000000000.getClass()
+println 2.0.getClass()
+
+=======================================================
+prog2
+
+
+def x = 1 + 1.5
+println x.getClass()
+
+===========================================================
+prog3
+
+def x = 5/2
+println x
+println x.getClass()
+println 5.intdiv(2)
+
+=======================================================
+prog4
+
+println ("min and max for byte")
+println Byte.MIN_VALUE
+println Byte.MAX_VALUE
+println "min and max for short"
+println Short.MIN_VALUE
+println Short.MAX_VALUE
+println "min and max for int"
+println Integer.MIN_VALUE
+println Integer.MAX_VALUE
+println "min and max for long"
+println Long.MIN_VALUE
+println Long.MAX_VALUE
+println "min and max for float"
+println Float.MIN_VALUE
+println Float.MAX_VALUE
+println "min and max for double"
+println Double.MIN_VALUE
+println Double.MAX_VALUE
+
+==============================================================
+prog5
+
+byte x = 127
+println x.getClass()
+def c=x+1
+print c.getClass()
+
+==================================================================
+prog6
+
+def x ="Hello, Groovy!"
+def len = x.length()
+print len
+
+==================================================================
+prog7
+
+
+def x ="max"
+println "hello, "+x
+println "hello, ${x}"
+
+======================================================================
+
+prog8
+
+def x ="racecar"
+def y = x.reverse()
+if (x == y)
+{
+    println "racecar is a palindrome"
+}
+def a = "Bob"
+a = a.toUpperCase()
+def b = a.reverse()
+if(a == b)
+{
+    println "Bob is a palindrome"
+}
+
+
+=====================================================================
+prog9
+
+def x ="Hello, World. How are you?"
+x = x.split(" ")
+println x
+
+=====================================================================
+prog 10
+
+def x ="Hello, World. How are you?"
+x = x.split(" ")
+println x[1]
+======================================================================
+prog11
+
+def x ="Hello , World . How are you ?"
+x = x.split(" ")
+def m = x[-2]
+m=m.reverse()
+print m
+
+====================================================================
+
+prog 12
+
+def isprime(int n)
+{
+    def m =n/2
+    def flag=0
+    for(int i=2;i<m;i++)
+    {
+        if(n%i==0)
+        {
+            flag=1
+        }
+    }
+    if(flag==1)
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
+}
+
+def x=isprime(31)
+print x
+
+====================================================================
+
+prog 13
+
+def list =["max","vettel","alonso","nico","senna"]
+list.sort()
+println list
+list = list.sort { -it.size() }
+println list
+
+======================================================================
+
+prog 14
+
+def list = [1,2,3,4,5]
+def sum1=0
+def sum2=0
+println list.each { it -> sum1=sum1+it}
+println list.each { it -> sum2=sum2+it+it}
+println sum1
+println sum2
+def avg=(sum1+sum2)/2
+println avg
+
+=======================================================================
+prog 15
+
+def page = 'https://www.google.com/'.toURL().text
+byte[] contents = page.bytes
+println contents
+
+
+
+=========================================================================
+
+prog 16
+
+def list = [1,2,3,4,5,-1,-2,-3,0,22]
+
+println list.findAll { it -> it>0 }
+
+=======================================================================
+
+prog 17
+
+def mlstr = """hi
+hi aeiou
+hi"""
+def lt = mlstr.split()
+def count=0
+for (i in lt)
+{
+    for(j in i)
+    {
+        if(j == 'a' || j == 'o' || j == 'a'|| j == 'i' || j == 'u')
+        {
+            count =count +1
+        }
+    }
+}
+println "count of vowels are $count"
+
+===========================================================================
+
+prog 18
+
+def range = (1..15)
+println range
+def lt=[]
+//range.findAll { it -> lt.add(Integer.toBinaryString(it)) }
+for (i in range)
+{
+println String.format("%4s", Integer.toBinaryString(i)).replace(' ', '0')
+}
+
+===========================================================================c
+
+prog 19
+
+def username = "username"
+def password = "password"
+def con = username+":"+password
+println con
+byte[] bytecon = con.getBytes()
+println bytecon
+String encod = bytecon.encodeBase64() 
+println encod
+byte[] decod = encod.decodeBase64()
+println decod
+def newstr = new String(decod)
+println newstr
+newstr = newstr.split(":")
+println newstr[0]
+println "username : ${newstr[0]}"
+println "password : ${newstr[1]}"
+
+===================================================================
+
+prog 20
+
+class Course
+{
+    String name;
+    int days;
+   
+   Course(name,days)
+   {
+       this.name = name
+       this.days = days
+       println name
+   }
+  
+    public static void main(String[] args)
+    {
+        def x=[]
+        List<Course> objects = new ArrayList<Course>();
+        objects.add(new Course("dave",3)); 
+        objects.add(new Course("bob",3));
+        objects.add(new Course("calvin",5));
+        objects.add(new Course("nick",1));
+        for(int i=0;i<4;i++)
+        {
+            def y=[]
+                y.add(objects.get(i).name)
+                y.add(objects.get(i).days)
+            x.add(y)
+        }
+        println x.sort()
+    }
+}
+
+===========================================================================
+
+prog 21
+
+public class Dollars
+{
+    private String name;
+    private int dollars;
+    
+    public Dollars (String name, int dollars)
+    {
+        this.name = name;
+        this.dollars = dollars;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+    
+    public int getChange()
+    {
+        return dollars;
+    }
+
+    public static void displayArray(Dollars[] dol)
+    {
+        for (int n = 0; n < dol.length; n++) 
+        {
+            if (dol[n] != null) 
+            {
+                int sum = dol[n].getChange();
+                for (int m = n + 1; m < dol.length; m++)
+                {
+                    if (dol[m] != null && dol[n].getName().equals(dol[m].getName())) 
+                    {
+                        sum += dol[m].getChange();
+                        dol[m] = null;
+                    }
+                }
+                System.out.printf("%s -- %d\n", dol[n].getName(), sum);
+            }
+        }
+    }
+   
+    
+   
+
+ public static void main(String[] args)
+    {
+        // Test with 5 records
+        Dollars[] dollarsArr = new Dollars[5];
+        dollarsArr[0] = new Dollars("USD", 10);
+        dollarsArr[1] = new Dollars("EURO", 12);
+        dollarsArr[2] = new Dollars("EURO", 5);
+        dollarsArr[3] = new Dollars("USD", 16);
+        dollarsArr[4] = new Dollars("USD", 30);
+        displayArray(dollarsArr);
+    }
+}
+
+
+
+
